@@ -76,7 +76,7 @@ public class Main {
         Function<Object, String> function2 = s -> "resultTrue";
         Function<Object, String> function3 = s -> "resultFalse";
 
-        System.out.println(ternaryOperator(predicate,function2,function3).apply("asd"));
+        System.out.println(ternaryOperator(predicate,function2,function3));
     }
 
     public static Function<Object, String> ternaryOperator(Predicate<Integer> condition, Function<Object, String> ifTrue, Function<Object, String> ifFalse) {
