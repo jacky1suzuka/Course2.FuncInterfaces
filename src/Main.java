@@ -12,14 +12,14 @@ public class Main {
         //Анонимный класс
         Predicate<Integer> predicate = new Predicate<Integer>() {
             @Override
-            public boolean test(Integer integer) {
+            public boolean test(Integer  integer) {
                 return integer >= 0;
             }
         };
         System.out.println(predicate.test(-10));
 
         //Лямбда
-        Predicate<Integer> predicate1 = integer -> integer >= 0;
+        Predicate<Object> predicate1 = s -> (Integer) s >= 0;
         System.out.println(predicate1.test(10));
 
 
@@ -76,10 +76,10 @@ public class Main {
         Function<Object, String> function2 = s -> "resultTrue";
         Function<Object, String> function3 = s -> "resultFalse";
 
-        System.out.println(ternaryOperator(predicate,function2,function3));
+        System.out.println(ternaryOperator(predicate1,function2,function3).apply(-3));
     }
 
-    public static Function<Object, String> ternaryOperator(Predicate<Integer> condition, Function<Object, String> ifTrue, Function<Object, String> ifFalse) {
-        return t -> condition.test(-5) ? ifTrue.apply(3) : ifFalse.apply(3);
+    public static Function<Object, String> ternaryOperator(Predicate<Object> condition, Function<Object, String> ifTrue, Function<Object, String> ifFalse) {
+        return t -> condition.test(t) ? ifTrue.apply(t) : ifFalse.apply(t);
     }
 }
